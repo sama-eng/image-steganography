@@ -1,6 +1,5 @@
 from helper import (file_exists, get_file_extension, read_image_size, calc_max_steg_size)
 
-
 def main():
     print("\n==================================")
     print("   Welcome to image steganography tool :) ")

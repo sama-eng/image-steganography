@@ -14,6 +14,7 @@ def get_file_extension(path):
         return path.rsplit('.', 1)[-1]
     return ''
 
+
 def read_image_size(path):
     """Reads width and height from a PPM (P3) image file.
     Returns (width, height)"""
@@ -35,6 +36,7 @@ def read_image_size(path):
     except Exception as e:
         print("Error reading image size:", e)
         return 0, 0
+    
     
 def calc_max_steg_size(width, height):
     """
