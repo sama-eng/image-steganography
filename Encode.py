@@ -27,10 +27,23 @@ def encode_message(image_path):
     binary_message = ''.join([format(ord(c), '08b') for c in message])
     binary_message += '00000000' 
 
-    if len(binary_message) > len(pixel_values):
-        print("Message too long for this image. Aborting.")
-        return
+    required_bits = len(binary_message)
+    available_bits = len(pixel_values)
 
+
+    if required_bits > available_bits:
+        extra_bits = required_bits - available_bits
+        extra_pixels = (extra_bits + 2) // 3
+        new_height = height + (extra_pixels // width) + 1
+        added_pixels = (new_height * width) - (width * height)
+        for _ in range(added_pixels * 3):
+            pixel_values.append(0)
+
+        height = new_height
+
+        print("Image extended to fit the message.")
+
+        
     for i in range(len(binary_message)):
         pixel_values[i] = (pixel_values[i] & ~1) | int(binary_message[i])
 
