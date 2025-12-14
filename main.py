@@ -1,11 +1,11 @@
 from helper import (file_exists, get_file_extension, read_image_size, calc_max_steg_size)
-
+from Encode import (encode_message)
 def main():
-    print("\n==================================")
+    print("\n============================================")
     print("   Welcome to image steganography tool :) ")
-    print("==================================\n")
+    print("==============================================\n")
 
-    print("Please provide the path to your image (PPM format ONLY).")
+    print("Please provide the path to your image (PPM format ONLY (P3)).")
     print(" OR drag and drop the PPM file \n")
 
     while True: 
@@ -37,7 +37,7 @@ def main():
         print("2. Extract a message")
         print("3. Change image")
         print("4. Exit program")
-        choice = input("Enter 1, 2, 3, or 4: ").strip()
+        choice: str = input("Enter 1, 2, 3, or 4: ").strip()
     
         if choice == "1":
             encode_message(image_path)  
